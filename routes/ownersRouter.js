@@ -25,4 +25,9 @@ router.get("/", function (req, res) {
     res.send("hey its working");
 });
 
+router.get("/admin", function (req, res) {
+    let success = req.flash("success");
+    res.render("createproducts", {success});
+})
+
 module.exports = router;

@@ -4,7 +4,7 @@ const config = require("config")
 
 // console.log(process.env.DEBUG);
 
-mongoose.connect(`${config.get("MONGODB_URI")}/scatch`)
+mongoose.connect("mongodb://127.0.0.1:27017/scatch")
 .then(function(){
     console.log("connected");
 })
