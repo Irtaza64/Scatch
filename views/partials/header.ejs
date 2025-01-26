@@ -4,12 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Scatch - Modern Shopping</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',    // Indigo
+                        secondary: '#0f172a',   // Slate Dark
+                        accent: '#a855f7',      // Purple
+                        neutral: '#f1f5f9',     // Slate Light
+                        success: '#10b981',     // Emerald
+                        warning: '#f59e0b',     // Amber
+                        error: '#ef4444',       // Red
+                        surface: '#ffffff',     // White
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom gradient classes */
+        .gradient-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+        .gradient-surface {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+    </style>
 </head>
 
-<body class="font-['helvetica_now_display']">
-    <nav class="w-full fixed top-0 left-0 px-5 py-3">
-        <h3 class="text-xl">Scatch</h3>
+<body class="font-sans bg-neutral">
+    <nav class="w-full flex justify-between px-8 py-4 bg-surface shadow-sm">
+        <h3 class="text-2xl font-semibold text-primary">Scatch</h3>
+        <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+        <% if (loggedin) { %>
+            <div class="flex gap-8">
+                <a href="/shop" class="text-secondary hover:text-primary transition-colors">Shop</a>
+                <a href="/cart" class="text-secondary hover:text-primary transition-colors">Cart</a>
+                <a href="" class="text-secondary hover:text-primary transition-colors">My Account</a>
+                <a href="/" class="text-error hover:text-red-600 transition-colors">Log out</a>
+            </div>
+        <% } %>
     </nav>
