@@ -19,7 +19,7 @@ router.get("/cart", isLoggedIn, async (req, res) => {
     let user = await usermodel.findOne({ email: req.user.email }).populate("cart")
     if(user.cart.length < 1 || user.cart == undefined) {
         req.flash("success", "Add something in the cart first.");
-        res.redirect("/shop");
+        res.redirect("/shop", {success});
     }
     else {
         let total = user.cart[0].price + 20 - user.cart[0].discount;

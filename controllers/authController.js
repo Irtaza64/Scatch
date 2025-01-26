@@ -26,7 +26,8 @@ module.exports.registerUser = async (req, res) => {
                     
                     let token = generateToken(createdUser);
                     res.cookie("token", token);
-                    res.send("User created successully.");
+                    req.flash("error", "User created successfully.");
+                    res.redirect("/");
                 }
             });
         });
@@ -52,7 +53,8 @@ module.exports.loginUser = async function (req, res) {
             token = generateToken(user);
             res.cookie("token", token);
             let products = await prodectsModel.find();
-                res.render("shop", {products});
+            let success = ""
+                res.render("shop", {products, success});
         }
         else {
             req.flash("error", "Incorrect Email or Password.");
